@@ -4,9 +4,9 @@ return [
     'shield_resource' => [
         'should_register_navigation' => true,
         'slug' => 'shield/roles',
-        'navigation_sort' => -1,
+        'navigation_sort' => 2,
         'navigation_badge' => true,
-        'navigation_group' => true,
+        'navigation_group' => 'User Management',
         'sub_navigation_position' => null,
         'is_globally_searchable' => false,
         'show_model_path' => true,
@@ -22,7 +22,7 @@ return [
 
     'super_admin' => [
         'enabled' => true,
-        'name' => 'super_admin',
+        'name' => 'super-admin',
         'define_via_gate' => false,
         'intercept_gate' => 'before', // after
     ],
