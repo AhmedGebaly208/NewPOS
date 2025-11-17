@@ -12,6 +12,13 @@ abstract class BaseModel extends Model
     use SoftDeletes, Auditable;
 
     /**
+     * Indicates if the model uses UUID as primary key.
+     *
+     * @var bool
+     */
+    protected $useUuid = false;
+
+    /**
      * The attributes that should be cast.
      *
      * @var array<string, string>
@@ -37,7 +44,7 @@ abstract class BaseModel extends Model
         parent::boot();
 
         static::creating(function ($model) {
-            if (empty($model->{$model->getKeyName()})) {
+            if ($model->useUuid && empty($model->{$model->getKeyName()})) {
                 $model->{$model->getKeyName()} = (string) Str::uuid();
             }
         });
