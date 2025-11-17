@@ -88,7 +88,9 @@ class CategoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('image')
-                    ->circular(),
+                    ->disk('public')
+                    ->circular()
+                    ->defaultImageUrl(url('/images/default-category.png')),
 
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()

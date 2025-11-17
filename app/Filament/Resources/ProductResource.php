@@ -175,7 +175,9 @@ class ProductResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('image')
-                    ->circular(),
+                    ->disk('public')
+                    ->circular()
+                    ->defaultImageUrl(url('/images/default-product.png')),
                 
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
