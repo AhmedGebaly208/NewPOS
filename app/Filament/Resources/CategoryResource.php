@@ -33,30 +33,36 @@ class CategoryResource extends Resource
                             ->required()
                             ->maxLength(255)
                             ->live(onBlur: true)
-                            ->afterStateUpdated(fn (string $operation, $state, Forms\Set $set) => 
+                            ->afterStateUpdated(fn (string $operation, $state, Forms\Set $set) =>
                                 $operation === 'create' ? $set('slug', Str::slug($state)) : null
                             ),
-                        
+
                         Forms\Components\TextInput::make('slug')
                             ->required()
                             ->maxLength(255)
                             ->unique(ignoreRecord: true)
                             ->helperText('Auto-generated from name'),
-                        
+
                         Forms\Components\Select::make('parent_id')
                             ->label('Parent Category')
                             ->relationship('parent', 'name')
                             ->searchable()
                             ->preload()
                             ->nullable(),
-                        
+
                         Forms\Components\Textarea::make('description')
                             ->rows(3)
                             ->columnSpanFull(),
-                        
+
                         Forms\Components\FileUpload::make('image')
                             ->image()
                             ->directory('categories')
+                            ->maxSize(10240)
+                            ->imageResizeMode('cover')
+                            ->imageCropAspectRatio('16:9')
+                            ->imageResizeTargetWidth('1920')
+                            ->imageResizeTargetHeight('1080')
+                            ->helperText('Maximum file size: 10MB. Recommended: 1920x1080px')
                             ->columnSpanFull(),
                     ])
                     ->columns(2),
@@ -67,7 +73,7 @@ class CategoryResource extends Resource
                             ->numeric()
                             ->default(0)
                             ->required(),
-                        
+
                         Forms\Components\Toggle::make('is_active')
                             ->label('Active')
                             ->default(true)
@@ -83,30 +89,30 @@ class CategoryResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('image')
                     ->circular(),
-                
+
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
-                
+
                 Tables\Columns\TextColumn::make('parent.name')
                     ->label('Parent')
                     ->searchable()
                     ->sortable()
                     ->default('—'),
-                
+
                 Tables\Columns\TextColumn::make('products_count')
                     ->counts('products')
                     ->label('Products')
                     ->sortable(),
-                
+
                 Tables\Columns\TextColumn::make('sort_order')
                     ->sortable()
                     ->toggleable(),
-                
+
                 Tables\Columns\IconColumn::make('is_active')
                     ->boolean()
                     ->sortable(),
-                
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -118,14 +124,14 @@ class CategoryResource extends Resource
                     ->relationship('parent', 'name')
                     ->multiple()
                     ->preload(),
-                
+
                 Tables\Filters\TernaryFilter::make('is_active')
                     ->label('Active')
                     ->boolean()
                     ->trueLabel('Active categories')
                     ->falseLabel('Inactive categories')
                     ->native(false),
-                
+
                 Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([

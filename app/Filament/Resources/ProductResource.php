@@ -149,6 +149,12 @@ class ProductResource extends Resource
                             ->label('Primary Image')
                             ->image()
                             ->directory('products')
+                            ->maxSize(10240)
+                            ->imageResizeMode('cover')
+                            ->imageCropAspectRatio('1:1')
+                            ->imageResizeTargetWidth('800')
+                            ->imageResizeTargetHeight('800')
+                            ->helperText('Maximum file size: 10MB. Recommended: 800x800px')
                             ->columnSpanFull(),
                         
                         Forms\Components\FileUpload::make('images')
@@ -157,6 +163,8 @@ class ProductResource extends Resource
                             ->directory('products')
                             ->multiple()
                             ->maxFiles(5)
+                            ->maxSize(10240)
+                            ->helperText('Maximum 5 images, 10MB each')
                             ->columnSpanFull(),
                     ]),
             ]);
