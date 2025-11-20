@@ -1,0 +1,7 @@
+{
+    "Core": true,
+    "User": true,
+    "Product": true,
+    "Inventory": true,
+    "Customer": true
+}
