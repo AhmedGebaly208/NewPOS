@@ -2,5 +2,6 @@
     "Core": true,
     "User": true,
     "Product": true,
-    "Inventory": true
+    "Inventory": true,
+    "Customer": true
 }
