@@ -5,5 +5,6 @@
     "Inventory": true,
     "Customer": true,
     "Discount": true,
-    "Sales": true
+    "Sales": true,
+    "POS": true
 }
