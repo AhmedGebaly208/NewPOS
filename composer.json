@@ -47,7 +47,13 @@
             "Modules\\Inventory\\": "Modules/Inventory/app/",
             "Modules\\Inventory\\Database\\Seeders\\": "Modules/Inventory/database/seeders/",
             "Modules\\Customer\\": "Modules/Customer/app/",
-            "Modules\\Customer\\Database\\Seeders\\": "Modules/Customer/database/seeders/"
+            "Modules\\Customer\\Database\\Seeders\\": "Modules/Customer/database/seeders/",
+            "Modules\\Discount\\": "Modules/Discount/app/",
+            "Modules\\Discount\\Database\\Seeders\\": "Modules/Discount/database/seeders/",
+            "Modules\\Sales\\": "Modules/Sales/app/",
+            "Modules\\Sales\\Database\\Seeders\\": "Modules/Sales/database/seeders/",
+            "Modules\\POS\\": "Modules/POS/app/",
+            "Modules\\POS\\Database\\Seeders\\": "Modules/POS/database/seeders/"
         }
     },
     "autoload-dev": {

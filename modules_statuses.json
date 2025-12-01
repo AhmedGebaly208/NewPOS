@@ -3,5 +3,8 @@
     "User": true,
     "Product": true,
     "Inventory": true,
-    "Customer": true
+    "Customer": true,
+    "Discount": true,
+    "Sales": true,
+    "POS": true
 }
